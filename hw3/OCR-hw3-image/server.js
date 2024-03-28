@@ -34,10 +34,7 @@ app.post("/analyze", async (req, res) => {
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          process.env.OPENAI_API_KEY ||
-          "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"
-        }`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
     });
 
