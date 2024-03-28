@@ -7,13 +7,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(express.static("public")); // Serve your static files
+app.use(express.static("public"));
 
 app.post("/analyze", async (req, res) => {
-  const { imageUrl } = req.body; // Extract the image URL from the request body
-
+  const { imageUrl } = req.body;
   const payload = {
-    model: "gpt-4-vision-preview", // Confirm the model name is correct
+    model: "gpt-4-vision-preview",
     messages: [
       {
         role: "user",
