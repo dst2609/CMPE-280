@@ -1,0 +1,35 @@
+.login-box {
+  width: 500px;
+  margin: 10px auto;
+  border: 2px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: justify;
+}
+
+.login-box-title {
+  width: 530px;
+  height: 50px;
+  margin: 10px auto;
+  border: 1px solid white;
+  padding: 1px;
+  border-radius: 5px;
+  background-color: lightgray;
+  text-align: center;
+  align-items: center;
+}
+
+.h2 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+
+.button {
+  border: 2px solid black;
+  border-style: dotted;
+  width: 200px;
+}
+
+.button1 {
+  color: blue;
+}

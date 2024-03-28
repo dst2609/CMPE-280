@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz Application with Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .hidden {
+        display: none;
+      }
+      .login-box {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #000;
+      }
+      .login-box-title {
+        margin: 20px;
+      }
+      .button {
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .button1 {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Login Section -->
+    <div class="login-box-title">
+      <h2>User Login</h2>
+    </div>
+    <div class="login-box">
+      <form id="loginForm" onsubmit="return startQuiz();">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter Username"
+          required
+        /><br /><br />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter Password"
+          required
+        /><br /><br />
+        <button
+          class="button1"
+          type="button"
+          onclick="alert('Contact support for more help')"
+        >
+          Create Account/Forgot?
+        </button>
+        <button class="button" type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Quiz Section, initially hidden -->
+    <main id="quizSection" class="hidden">
+      <header>
+        <h1>SCO Quiz Application</h1>
+      </header>
+
+      <!-- Math Question -->
+      <div id="mathQuestion" class="question">
+        <h2>Question 1</h2>
+        <p>
+          Given points (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>,
+          y<sub>2</sub>) select the formula to find the equation of the given
+          line.
+        </p>
+        <form>
+          <input type="radio" id="math1" name="math" value="linear" /><label
+            for="math1"
+            >y = mx + b</label
+          ><br />
+          <input type="radio" id="math2" name="math" value="circle" /><label
+            for="math2"
+            >(x - h)<sup>2</sup> + (y - k)<sup>2</sup> = r<sup>2</sup></label
+          ><br />
+          <input type="radio" id="math3" name="math" value="pointSlope" /><label
+            for="math3"
+            >y - y<sub>1</sub> = m(x - x<sub>1</sub>)</label
+          ><br />
+          <input type="radio" id="math4" name="math" value="twoPoint" /><label
+            for="math4"
+            >y - y<sub>2</sub> = (y<sub>2</sub> - y<sub>1</sub>) / (x<sub
+              >2</sub
+            >
+            - x<sub>1</sub>)(x - x<sub>2</sub>)</label
+          ><br />
+          <button
+            type="button"
+            onclick="submitAnswer('mathQuestion', 'linear')"
+          >
+            Submit & Next Question
+          </button>
+          <button type="button" onclick="clearSelection('math')">
+            Cancel & Clear Selection
+          </button>
+        </form>
+      </div>
+
+      <div id="cosineQuestion" class="question hidden">
+        <h2>Question 2</h2>
+
+        <p>Select the cosine theorem formula.</p>
+        <form>
+          <input
+            type="radio"
+            id="cosine1"
+            name="cosine"
+            value="formula1"
+          /><label for="cosine1">cos(α + β) = cos α cos β ± sin α sin β</label
+          ><br />
+          <input
+            type="radio"
+            id="cosine2"
+            name="cosine"
+            value="formula2"
+          /><label for="cosine2">sin(α + β) = sin α cos β + cos α sin β</label
+          ><br />
+          <input
+            type="radio"
+            id="cosine3"
+            name="cosine"
+            value="formula3"
+          /><label for="cosine3"
+            >sin α + sin β = 2 sin[(α + β)/2] cos[(α - β)/2]</label
+          ><br />
+          <input
+            type="radio"
+            id="cosine4"
+            name="cosine"
+            value="formula4"
+          /><label for="cosine4"
+            >sin α - sin β = 2 cos[(α + β)/2] sin[(α - β)/2]</label
+          ><br />
+          <button
+            type="button"
+            onclick="submitAnswer('cosineQuestion', 'formula1')"
+          >
+            Submit & Next Question
+          </button>
+          <button type="button" onclick="clearSelection('cosine')">
+            Cancel & Clear Selection
+          </button>
+        </form>
+      </div>
+      <!-- English Question -->
+      <div id="englishQuestion" class="question hidden">
+        <h2>Question 3</h2>
+        <form>
+          <p>
+            "Twitter wants more cash. The company announced two
+            <mark>$____ </mark> million debt offerings in a filing today, each
+            with a potential $100 increase provided that the sales are
+            oversubscribed. Assuming full tip, including the $100 million
+            boosters, <mark>____</mark> will raise up to $1.5 billion with the
+            two offerings."
+          </p>
+          <p>
+            As per the latest twitter news, complete the article snippet given
+            by selecting appropriate choices for the blanks.
+          </p>
+
+          <input
+            type="radio"
+            id="english1"
+            name="englishFirst"
+            value="650"
+            onclick="showSecondOptions();"
+          /><label for="english1">$650</label><br />
+          <input
+            type="radio"
+            id="english2"
+            name="englishFirst"
+            value="550"
+            onclick="showSecondOptions();"
+          /><label for="english2">$550</label><br />
+          <input
+            type="radio"
+            id="english3"
+            name="englishFirst"
+            value="1000"
+            onclick="showSecondOptions();"
+          /><label for="english3">$1000</label><br />
+
+          <div id="secondOptions" class="hidden">
+            <input
+              type="radio"
+              id="english4"
+              name="englishSecond"
+              value="twitter"
+            /><label for="english4">Twitter</label><br />
+            <input
+              type="radio"
+              id="english5"
+              name="englishSecond"
+              value="google"
+            /><label for="english5">Google</label><br />
+            <input
+              type="radio"
+              id="english6"
+              name="englishSecond"
+              value="facebook"
+            /><label for="english6">Facebook</label><br />
+          </div>
+          <p>
+            Source:
+            <a
+              href="http://techcrunch.com/2014/09/10/twitter-to-raise-up-to-1-5b-in-debt-offering/"
+              target="_blank"
+              >TechCrunch</a
+            >
+          </p>
+
+          <button type="button" onclick="submitEnglishAnswer()">
+            Submit & Next Question
+          </button>
+
+          <button type="button" onclick="clearEnglishSelection()">
+            Cancel & Clear Selection
+          </button>
+        </form>
+      </div>
+
+      <!-- Audio/Video Question -->
+      <div id="audioVideoQuestion" class="question hidden">
+        <h2>Question 4</h2>
+        <p>
+          Watch the video and answer the following question.<br />What is the
+          source as mentioned in the video?
+        </p>
+        <video id="quizVideo" width="320" height="240" controls>
+          <source src="http://www.nasa.gov/multimedia/videogallery/index.html#.VBF5S5dV0E" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <form>
+          <input type="radio" id="video1" name="video" value="NASA.Gov" /><label
+            for="video1"
+            >NASA.Gov</label
+          ><br />
+          <input type="radio" id="video2" name="video" value="Data.Gov" /><label
+            for="video2"
+            >Data.Gov</label
+          ><br />
+          <input type="radio" id="video3" name="video" value="Facebook" /><label
+            for="video3"
+            >Facebook</label
+          ><br />
+          <input type="radio" id="video4" name="video" value="XYZ.net" /><label
+            for="video4"
+            >XYZ.net</label
+          ><br />
+          <button
+            type="button"
+            onclick="submitAnswer('audioVideoQuestion', 'correctValue')"
+          >
+            Submit & Next Question
+          </button>
+          <button type="button" onclick="clearSelection('video')">
+            Cancel & Clear Selection
+          </button>
+        </form>
+        <p>
+          Source:
+          <a
+            href="http://www.nasa.gov/multimedia/videogallery/index.html#.VBF5S5dV0E"
+            target="_blank"
+            >NASA Video Gallery</a
+          >
+        </p>
+      </div>
+
+      <!-- Survey Question -->
+      <div id="survey" class="question hidden">
+        <h3>Survey SCO:</h3>
+        <form id="surveyForm">
+          <fieldset>
+            <legend>Survey</legend>
+            <label for="feedback">How did you like the center?</label><br />
+            <textarea
+              id="feedback"
+              name="feedback"
+              rows="4"
+              cols="50"
+              placeholder="Comments:"
+            ></textarea
+            ><br />
+
+            <label for="city">Select City:</label>
+            <select id="city" name="city">
+              <option value="San Jose">San Jose</option>
+              <option value="San Francisco">San Francisco</option>
+              <option value="Mountain View">Mountain View</option>
+              <option value="Palo Alto">Palo Alto</option>
+            </select>
+
+            <label for="roomNumber">Room Number:</label>
+            <select id="roomNumber" name="roomNumber">
+              <option value="Room 200">Room 200</option>
+              <option value="Room 210">Room 210</option>
+              <option value="Room 220">Room 220</option>
+              <option value="Room 230">Room 230</option></select
+            ><br />
+
+            <button type="button" onclick="submitSurvey()">
+              Submit & Get Score
+            </button>
+            <button type="button" onclick="skipSurvey()">
+              Skip & Get Score
+            </button>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- Summary Page -->
+      <div id="scorecard" class="hidden">
+        <h3>Summary Page:</h3>
+        <div>
+          <div>Quantitative Section</div>
+          <p>Number of Questions Answered: <span id="answered">0</span></p>
+          <p>Number of Correct Answers: <span id="correct">0</span></p>
+          <p>Score: <span id="score">0</span></p>
+
+        <p>Thank You!!</p>
+        <button onclick="finishQuiz()">Finish</button>
+      </div>
+    </main>
+
+    <script>
+      function startQuiz() {
+        // Assuming the 'login' is successful
+        document.querySelector(".login-box").classList.add("hidden");
+        document.querySelector(".login-box-title").classList.add("hidden");
+        document.getElementById("quizSection").classList.remove("hidden");
+        return false; // Prevent default form submission
+      }
+
+      var questions = [
+        "mathQuestion",
+        "cosineQuestion",
+        "englishQuestion",
+        "audioVideoQuestion",
+        "survey",
+      ];
+      var currentQuestionIndex = 0;
+      var correctAnswers = 0;
+
+      function submitAnswer(questionId, correctValues) {
+        var question = document.getElementById(questionId);
+        var selects = question.querySelectorAll("select");
+        var allCorrect = true;
+
+        for (var i = 0; i < selects.length; i++) {
+          if (selects[i].value !== correctValues[i]) {
+            allCorrect = false;
+            break;
+          }
+        }
+
+        if (allCorrect) {
+          correctAnswers++;
+        }
+
+        if (currentQuestionIndex < questions.length - 1) {
+          // Hide current and show next question
+          question.classList.add("hidden");
+          currentQuestionIndex++;
+          var nextQuestion = document.getElementById(
+            questions[currentQuestionIndex]
+          );
+          nextQuestion.classList.remove("hidden");
+        } else {
+          endQuiz();
+        }
+      }
+      // Function to show the second set of options when one of the first three is selected
+      function showSecondOptions() {
+        document.getElementById("secondOptions").classList.remove("hidden");
+      }
+
+      function clearSelection(groupName) {
+        var radios = document.querySelectorAll(`input[name="${groupName}"]`);
+        radios.forEach((radio) => {
+          radio.checked = false;
+        });
+        if (groupName === "englishFirst") {
+          // Hide the second set of options when the first set is cleared
+          document.getElementById("secondOptions").classList.add("hidden");
+        }
+      }
+      function submitEnglishAnswer() {
+        var correctFirstAnswer = "650";
+        var correctSecondAnswer = "twitter"; 
+
+        // Getting the user's selected answers
+        var firstAnswer = document.querySelector(
+          'input[name="englishFirst"]:checked'
+        )?.value;
+        var secondAnswer = document.querySelector(
+          'input[name="englishSecond"]:checked'
+        )?.value;
+
+        // Check if the answers are correct
+        if (
+          firstAnswer === correctFirstAnswer &&
+          secondAnswer === correctSecondAnswer
+        ) {
+          correctAnswers++; 
+        }
+
+        // Move to the next question regardless of whether the answer was correct
+        submitAnswer("englishQuestion");
+      }
+
+      function endQuiz() {
+        // Calculate the score as a percentage
+        var scorePercent = (correctAnswers / questions.length) * 100;
+
+        // Update the scorecard with the results
+        document.getElementById("answered").textContent = questions.length;
+        document.getElementById("correct").textContent = correctAnswers;
+        document.getElementById("score").textContent = scorePercent.toFixed(2);
+
+        // Show the scorecard
+        document.getElementById("scorecard").classList.remove("hidden");
+
+        // Hide the survey
+        if (currentQuestionIndex < questions.length) {
+          document
+            .getElementById(questions[currentQuestionIndex])
+            .classList.add("hidden");
+        }
+      }
+
+      function finishQuiz() {
+        // Functionality to finish the quiz and perhaps reset the quiz or navigate the user elsewhere
+        alert("Quiz finished!");
+
+        location.reload();
+      }
+
+      function submitSurvey() {
+        var feedback = document.getElementById("feedback").value;
+        var city = document.getElementById("city").value;
+        var roomNumber = document.getElementById("roomNumber").value;
+
+        // Process the feedback if necessary
+        console.log("Feedback:", feedback);
+        console.log("City:", city);
+        console.log("Room Number:", roomNumber);
+
+        // Proceed to show the score
+        endQuiz();
+      }
+
+      function skipSurvey() {
+        // If the user skips the survey, just end the quiz and show the score
+        endQuiz();
+      }
+    </script>
+  </body>
+</html>

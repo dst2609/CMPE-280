@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{hyperref}
+
+\title{Image Analysis Application Documentation}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This application takes an image URL, analyses the image, and outputs the image analysis. The image analysis is performed using the OpenAI API Vision.
+
+For more information about the model, visit the \href{https://platform.openai.com/docs/guides/vision}{OpenAI Vision Documentation}.
+
+\section{Usage}
+
+\begin{enumerate}
+    \item Install required node modules by running \texttt{npm install} in the console.
+    \item \textbf{Required:} A \texttt{.env} file with \texttt{PORT} and \texttt{OPENAI\_API\_KEY} values. (For the purpose of this homework, a temporary key is provided in \texttt{server.js}.)
+    \item To launch the application on localhost, use \texttt{npm start}.
+    \item Navigate to \url{http://localhost:3000/}
+\end{enumerate}
+
+On the webpage, enter the image URL and click "Analyze Image." You will then see the text description of the image.
+
+\section{Sample Images}
+
+For sample images, use the following URLs:
+
+\begin{itemize}
+    \item \url{https://picsum.photos/id/1/200/300.jpg}
+    \item \url{https://picsum.photos/id/2/200/300.jpg}
+    \item \url{https://picsum.photos/id/3/200/300.jpg}
+    \item \url{https://picsum.photos/id/4/200/300.jpg}
+\end{itemize}
+
+Users may change the number after \texttt{id} for more images.
+
+\end{document}

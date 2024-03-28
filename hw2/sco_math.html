@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Question</title>
+  </head>
+  <body>
+    <form id="mathQuestionForm">
+      <fieldset>
+        <legend>Question 1</legend>
+        <p>
+          Given points (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>,
+          y<sub>2</sub>) select the formula to find the equation of the given
+          line.
+        </p>
+
+        <!-- Option 1 -->
+        <input type="radio" id="option1" name="equation" value="linear" />
+        <label for="option1">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>y</mi> <mo>=</mo> <mi>m</mi><mi>x</mi> <mo>+</mo> <mi>b</mi>
+          </math> </label
+        ><br />
+
+        <!-- Option 2 -->
+        <input type="radio" id="option2" name="equation" value="circle" />
+        <label for="option2">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mo>(</mo><mi>x</mi> <mo>-</mo> <mi>h</mi><mo>)</mo
+            ><msup><mo>2</mo><mn>2</mn></msup>
+            <mo>+</mo>
+            <mo>(</mo><mi>y</mi> <mo>-</mo> <mi>k</mi><mo>)</mo
+            ><msup><mo>2</mo><mn>2</mn></msup> <mo>=</mo> <mi>r</mi
+            ><msup><mo>2</mo><mn>2</mn></msup>
+          </math> </label
+        ><br />
+
+        <!-- Option 3 -->
+        <input type="radio" id="option3" name="equation" value="pointSlope" />
+        <label for="option3">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>y</mi> <mo>-</mo> <mi>y<sub>1</sub></mi> <mo>=</mo> <mi>m</mi>
+            <mo>(</mo><mi>x</mi> <mo>-</mo> <mi>x<sub>1</sub></mi
+            ><mo>)</mo>
+          </math> </label
+        ><br />
+
+        <!-- Option 4 -->
+        <input type="radio" id="option4" name="equation" value="twoPoint" />
+        <label for="option4">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>y</mi> <mo>-</mo> <mi>y<sub>2</sub></mi> <mo>=</mo>
+            <mfrac>
+              <mrow>
+                <mi>y<sub>2</sub></mi> <mo>-</mo> <mi>y<sub>1</sub></mi>
+              </mrow>
+              <mrow>
+                <mi>x<sub>2</sub></mi> <mo>-</mo> <mi>x<sub>1</sub></mi>
+              </mrow>
+            </mfrac>
+            <mo>(</mo><mi>x</mi> <mo>-</mo> <mi>x<sub>2</sub></mi
+            ><mo>)</mo>
+          </math> </label
+        ><br />
+
+        <input type="submit" value="Submit & Next Question" />
+        <button type="reset">Cancel & Clear Selection</button>
+      </fieldset>
+    </form>
+  </body>
+</html>
