@@ -1,0 +1,77 @@
+.chat-response {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f5f5f5; /* Light gray */
+}
+
+.chat-wrapper {
+  font-family: Arial, sans-serif;
+  font-size: large;
+  word-spacing: 3px;
+  border: 1px solid #ccc;
+  width: 800px;
+  height: 900px; /* Fixed height */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  background-color: #003366; /* Deloitte color */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.chat-body {
+  padding: 25px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.chat-input {
+  font-size: large;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chat-buttons {
+  text-align: right;
+}
+
+.button-send,
+.button-cancel,
+.button-save {
+  /* Apply common styles for buttons */
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white; /* White text for all buttons */
+}
+
+.button-send {
+  background-color: #0052cc; /* Darker blue */
+}
+
+.button-cancel {
+  background-color: #a700a7; /* Purple */
+}
+
+.button-save {
+  background-color: #4caf50; /* Green color similar to Material Design's Green */
+}
+
+.chat-response {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f5f5f5; /* Light gray */
+}
